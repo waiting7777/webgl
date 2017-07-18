@@ -33,6 +33,8 @@ BjsApp.init = function(){
     var sphereMaterial = new BABYLON.StandardMaterial('sphereMat', scene)
     sphereMaterial.diffuseColor = new BABYLON.Color3(1, 0, 0)
     sphereMaterial.alpha = 0.5
+    sphereMaterial.specularColor = new BABYLON.Color3(0, 0, 1)
+    sphereMaterial.specularPower = 5
 
     sphere2.material = sphereMaterial
 
@@ -45,6 +47,11 @@ BjsApp.init = function(){
     box.material = sphereMaterial
 
     var cyllinder = BABYLON.Mesh.CreateCylinder('cyl', 5, 1, 3, 16, scene)
+
+    var emissiveMaterial = new BABYLON.StandardMaterial('emissiveMat', scene)
+    emissiveMaterial.emissiveColor = new BABYLON.Color3(0, 1, 0)
+    
+    cyllinder.material = emissiveMaterial
 
     var lines = BABYLON.Mesh.CreateLines('lines', [
         new BABYLON.Vector3(0, 5, 0),
