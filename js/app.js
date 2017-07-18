@@ -22,6 +22,19 @@ BjsApp.init = function(){
     var sphere2 = BABYLON.Mesh.CreateSphere('sphere2', 16, 4, scene)
     sphere2.position = new BABYLON.Vector3(3, 3, 3)
 
+    var box = BABYLON.Mesh.CreateBox('box', 1, scene)
+    box.position = new BABYLON.Vector3(7, 2, -5)
+
+    var cyllinder = BABYLON.Mesh.CreateCylinder('cyl', 5, 1, 3, 16, scene)
+
+    var lines = BABYLON.Mesh.CreateLines('lines', [
+        new BABYLON.Vector3(0, 5, 0),
+        new BABYLON.Vector3(1, 5, 0),
+        new BABYLON.Vector3(0, 5, 1),
+        new BABYLON.Vector3(2, 2, 0),
+        new BABYLON.Vector3(1, 5, -5)
+    ], scene)
+
     engine.runRenderLoop(function(){
         scene.render()
     })
