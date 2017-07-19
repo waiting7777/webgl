@@ -11,6 +11,8 @@ BjsApp.init = function(){
     var camera = new BABYLON.ArcRotateCamera('camera', 0, 0, 15, BABYLON.Vector3.Zero(),scene)
     camera.attachControl(canvas)
 
+    camera.upperRadiusLimit = 50
+
     var light = new BABYLON.HemisphericLight('light1', new BABYLON.Vector3(0, 1, 0), scene)
     light.intensity = 0.5
     light.groundColor = new BABYLON.Color3(0, 0, 1)
@@ -35,6 +37,20 @@ BjsApp.init = function(){
     planet1.position.x = 4
     planet1.material = planetMaterial
     
+    var skybox = BABYLON.Mesh.CreateBox('skybox', 1000, scene)
+    var skyboxMaterial = new BABYLON.StandardMaterial('skyboxMat', scene)
+
+    skyboxMaterial.backFaceCulling = false
+    
+    skybox.infiniteDistance = true
+
+    skybox.material = skyboxMaterial
+
+    skyboxMaterial.diffuseColor = new BABYLON.Color3(0, 0, 0)
+    skyboxMaterial.specularColor = new BABYLON.Color3(0, 0, 0)
+
+    skyboxMaterial.reflectionTexture = new BABYLON.CubeTexture('assets/images/skybox', scene)
+    skyboxMaterial.reflectionTexture.coordinatesMode = BABYLON.Texture.SKYBOX_MODE
 
     engine.runRenderLoop(function(){
         scene.render()
