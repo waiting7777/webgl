@@ -18,6 +18,14 @@ BjsApp.init = function(){
     scene.clearColor = new BABYLON.Color3(0, 0, 0)
 
     var sun = BABYLON.Mesh.CreateSphere('sun', 16, 4, scene)
+    var sunMaterial = new BABYLON.StandardMaterial('sunMaterial', scene)
+    sunMaterial.emissiveTexture = new BABYLON.Texture('assets/images/sun.jpg', scene)
+    sunMaterial.diffuseColor = new BABYLON.Color3(0, 0, 0)
+    sunMaterial.specularColor = new BABYLON.Color3(0, 0, 0)
+    sun.material = sunMaterial
+
+    var sunLight = new BABYLON.PointLight('sunLight', BABYLON.Vector3.Zero(), scene)
+    sunLight.intensity = 2
 
     var planetMaterial = new BABYLON.StandardMaterial('planetMat', scene)
     planetMaterial.diffuseTexture = new BABYLON.Texture('./assets/images/sand.jpg', scene)
